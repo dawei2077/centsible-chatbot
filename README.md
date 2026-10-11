@@ -138,7 +138,7 @@ python text_first.py +1XXXXXXXXXX "User Name"
 ```
 Or via HTTP:
 ```text
-http://127.0.0.1:8000/text-first?phone=+1XXXXXXXXXX&name=Leo
+http://127.0.0.1:8000/text-first?phone=+1XXXXXXXXXX
 ```
 
 ---
