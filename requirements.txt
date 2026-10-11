@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+requests
+python-dotenv
+google-genai
+presidio-analyzer
+presidio-anonymizer
+pdfplumber
+pytesseract
+Pillow
+# Spacy model needs to be downloaded separately:
+# python -m spacy download en_core_web_lg

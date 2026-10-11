@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "dotenv": "^18.0.7",
+    "spectrum-ts": "^12.10.1",
+    "tsx": "^4.23.15"
+  }
+}

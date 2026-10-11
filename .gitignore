@@ -1,0 +1,38 @@
+# Environment & Secrets (NEVER COMMIT!)
+.env
+.env.local
+*.env
+
+# SQLite Database
+memory.db
+*.sqlite3
+*.db
+
+# Python
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Node / JavaScript
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Uploads & Temp Files
+temp_uploads/
+*.pdf
+*.jpg
+*.jpeg
+*.png
+
+# IDE & OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
