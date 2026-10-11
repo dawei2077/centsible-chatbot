@@ -17,6 +17,49 @@
 * **Outbound "Text-First" Engine:** Capable of initiating new iMessage conversations with users before they text in.
 
 ---
+## 🏗️ Architecture & Data Flow
+
+Centsible connects iMessage to an AI-powered financial advisor through the Photon and Spectrum bridge, a Python FastAPI backend, and Google Gemini. Before sensitive information is sent to the AI model, the backend applies PII detection and redaction to minimize exposure of private data.
+
+```mermaid
+flowchart TB
+    U["💬 User on iMessage"]
+    B["📱 Photon + Spectrum Bridge"]
+    API["⚡ FastAPI Backend"]
+    P["🔒 PII Detection & Redaction"]
+    AI["🤖 Google Gemini"]
+    S["🌐 Live Deal Search"]
+    DB[("💾 SQLite Memory")]
+
+    U <--> B
+    B <--> API
+    API --> P
+    P --> AI
+    AI --> API
+    API <--> S
+    API <--> DB
+
+    classDef app fill:#202124,stroke:#9ca3af,color:#f9fafb,stroke-width:1.5px
+    classDef privacy fill:#14532d,stroke:#4ade80,color:#ffffff,stroke-width:2px
+    classDef ai fill:#1e3a8a,stroke:#60a5fa,color:#ffffff,stroke-width:2px
+    classDef database fill:#713f12,stroke:#fbbf24,color:#ffffff,stroke-width:1.5px
+
+    class U,B,API,S app
+    class P privacy
+    class AI ai
+    class DB database
+```
+
+### How It Works
+
+1. **User Interaction:** Users send financial questions, purchase details, or receipt images through iMessage.
+2. **Message Bridge:** Photon and Spectrum relay messages between iMessage and the FastAPI backend.
+3. **Privacy Protection:** Microsoft Presidio and pattern-based detection identify and redact sensitive information before the relevant content is sent to Gemini.
+4. **AI Analysis:** Gemini generates concise budgeting advice, spending feedback, receipt analysis, and purchase recommendations.
+5. **Supporting Services:** SQLite stores persistent user memory, while live search retrieves relevant deals when requested.
+6. **Response Delivery:** The backend sends the generated response back through the bridge to iMessage.
+
+---
 
 ## 🛠️ Tech Stack
 
